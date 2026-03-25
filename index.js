@@ -26,7 +26,7 @@ const Tag = require("./models/Tag.model")
 const Project = require("./models/Project.model");
 
 
-initializeDatabase();
+// initializeDatabase();
 
 
 async function createUser(details){
@@ -611,4 +611,13 @@ app.get("/report/closedTasks", authenticateToken, async (req, res) => {
 });
 
 
-app.listen("3001", () => console.log("Server running on port 3001"))
+
+initializeDatabase()
+  .then(() => {
+    app.listen(3001, () => {
+      console.log("Server running on port 3001 and connected to MongoDB");
+    });
+  })
+  .catch((error) => {
+    console.error("Failed to connect to the database. Server not started.", error);
+  });
