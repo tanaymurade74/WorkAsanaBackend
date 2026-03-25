@@ -277,7 +277,7 @@ app.post("/auth/login", async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ Message: "Error while trying to log in", Error: error });
+        return res.status(500).json({ Message: "Error while trying to log in"});
     }
 });
 
